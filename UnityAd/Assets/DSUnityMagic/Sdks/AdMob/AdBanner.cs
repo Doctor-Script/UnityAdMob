@@ -20,7 +20,7 @@ namespace DSUnityMagic.Sdks.AdMob
 		public abstract void LoadAd();
 		
 		public abstract void ChangePosition(ADPosition pos);
-		public abstract bool GetLoadingState();
+		public abstract bool GetIsLoading();
 
 		public virtual void SetVisible(bool isVisible) {
 			this.isAdVisble = isVisible;

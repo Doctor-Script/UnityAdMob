@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 namespace DSUnityMagic.Sdks.AdMob
@@ -91,7 +91,7 @@ namespace DSUnityMagic.Sdks.AdMob
 			}
 		}
 
-		public override bool GetLoadingState() {
+		public override bool GetIsLoading() {
 			return false;
 		}
 

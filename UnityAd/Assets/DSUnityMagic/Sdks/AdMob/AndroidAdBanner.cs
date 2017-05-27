@@ -33,14 +33,14 @@ namespace DSUnityMagic.Sdks.AdMob
 			// Not in constructor, because can be called before AndroidJavaObject can be loaded
 			#if UNITY_ANDROID
 			if (javaAdLoader == null && Application.platform == RuntimePlatform.Android) {
-				javaAdLoader = new AndroidJavaObject("com.example.googleplayplugin.playads");
+				javaAdLoader = new AndroidJavaObject("dsUnityMagic.sdks.adMob.JavaAdBannerLoader");
 			}
 			#endif
 
 			isAdVisble = true;
 
 			if (javaAdLoader != null) {
-				javaAdLoader.Call("AdLoad", adUnitId,  (int)adBannerSize, (int)adPosition);
+				javaAdLoader.Call("loadAd", adUnitId,  (int)adBannerSize, (int)adPosition);
 			}
 		}
 
@@ -50,7 +50,7 @@ namespace DSUnityMagic.Sdks.AdMob
 			isAdVisble = true;
 
 			if (javaAdLoader != null) {
-				javaAdLoader.Call("AdSetPosistion",(int)adPosition);
+				javaAdLoader.Call("setAdPosistion", (int)adPosition);
 			}
 		}
 
@@ -59,23 +59,23 @@ namespace DSUnityMagic.Sdks.AdMob
 			if(isVisible && !isAdVisble)
 			{
 				if (javaAdLoader != null) {
-					javaAdLoader.Call ("AdShow");
+					javaAdLoader.Call ("showAd");
 				}
 				isAdVisble = true;
 			}
 			if(!isVisible && isAdVisble)
 			{
 				if (javaAdLoader != null) {
-					javaAdLoader.Call ("AdHide");
+					javaAdLoader.Call ("hideAd");
 				}
 				isAdVisble = false;
 			}
 		}
 		
-		public override bool GetLoadingState()
+		public override bool GetIsLoading()
 		{
-			if (javaAdLoader == null) {
-				return javaAdLoader.Call<bool>("GetLoadingState");
+			if (javaAdLoader != null) {
+				return javaAdLoader.Call<bool>("getIsLoading");
 			}
 			return false;
 		}
@@ -83,7 +83,7 @@ namespace DSUnityMagic.Sdks.AdMob
 		public override void Vibration(int delay)
 		{
 			if (javaAdLoader != null) {
-				javaAdLoader.Call("VibrationTest", delay);
+				javaAdLoader.Call("vibrate", delay);
 			}
 		}
 	}

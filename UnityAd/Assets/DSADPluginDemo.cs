@@ -37,7 +37,7 @@ public class DSADPluginDemo : MonoBehaviour
 		if(freezeIndicator != null)
 		{
 			// On ad loading - indiactor is red 
-			if (banner.GetLoadingState()) {
+			if (banner.GetIsLoading()) {
 				freezeIndicator.renderer.material.color = Color.red;
 			} else {
 				freezeIndicator.renderer.material.color = Color.blue;
