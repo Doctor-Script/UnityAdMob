@@ -17,6 +17,7 @@ UnityAd/Library
 
 # Auto generated project files
 UnityAd/Assembly-CSharp*
+UnityAd/Assembly-UnityScript*
 
 UnityAd/*.sln
 UnityAd/*-csharp.sln
